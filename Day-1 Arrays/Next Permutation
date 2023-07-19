@@ -15,7 +15,8 @@ public:
         else{
             int prev=idx;
             for(int i=idx+1;i<N;i++){
-                if(arr[i]>arr[idx-1] and arr[i]<=arr[prev]){
+                if(arr[i]>arr[idx-1] and arr[i]<=arr[prev])
+                {
                     prev=i;
                 }
             }

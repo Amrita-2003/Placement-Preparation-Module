@@ -24,6 +24,5 @@ public:
         if (firstCol){
             for (int i = 0; i < matrix.size(); i++)matrix[i][0] = 0;
         }
-
     }
 };

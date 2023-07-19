@@ -1,21 +1,20 @@
 class Solution {
 public:
     double myPow(double x, int n) {
-        if (n == INT_MAX) return (x == 1) ? 1 : (x == -1) ? -1 : 0;
-        if (n == INT_MIN) return (x == 1 || x == -1) ? 1 : 0;
         double num = 1;
-        if(n>=0){
-            while(n>0){
-                num *= x;
-                n--;
+        long long nn = n;
+        if(nn < 0) nn = -nn;
+        while(nn>0){
+            if(nn%2==1){
+                num = num * x;
+                nn--;
+            }
+            else{
+                x = x*x;
+                nn/=2;
             }
         }
-        else{
-            n = -n;
-            while(n>0){
-                num *= x;
-                n--;
-            }
+        if(n < 0){
             num = 1.0/num;
         }
         return num;

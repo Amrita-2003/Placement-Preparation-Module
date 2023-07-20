@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        // array-sorted-non-decreasing order
+        // in-place, elements apper only once
+        // relative order should be same
+        int nonRepeat=0;
+        for(int repeat=1; repeat<nums.size(); repeat++){
+            if(nums[nonRepeat] != nums[repeat]){
+                nonRepeat++;
+                nums[nonRepeat] = nums[repeat];
+            }
+        }
+        return nonRepeat+1;
+    }
+};

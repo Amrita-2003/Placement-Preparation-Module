@@ -1,0 +1,24 @@
+class Solution 
+{
+    public:
+    //Function to find the maximum profit and the number of jobs done.
+    vector<int> JobScheduling(Job arr[], int n) 
+    { 
+        set<int> free;
+        for (int i=1; i <= n; i++) free.insert(i);
+        vector<pair<int, int>> jobs;
+        for (int i = 0; i < n; i++) jobs.push_back({arr[i].profit, arr[i].dead});
+        sort(jobs.begin(), jobs.end());
+        reverse(jobs.begin(), jobs.end());
+        int cnt = 0, tot = 0, p, d;
+        for (auto e : jobs) {
+            p = e.first, d = e.second;
+            if (*free.begin() > d) continue;
+            // find largest element x such that x <= d and remove it from set 'free'
+            auto idx = free.upper_bound(d);
+            free.erase(--idx);
+            cnt++; tot += p;
+        }
+        return {cnt, tot};
+    } 
+};

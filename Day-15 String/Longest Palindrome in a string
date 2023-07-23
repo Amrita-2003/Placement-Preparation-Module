@@ -1,0 +1,27 @@
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        int n=s.size(), startPos=0, maxLen = 0;
+        vector<vector<bool>> dp(n, vector<bool>(n, false));
+        for(int offset=0; offset<n; offset++) {
+            for(int i=0, j=offset; j<n; j++, i++){ // fixed offset sliding window
+                if(isPalindrome(dp, s, i, j) && offset>=maxLen) {
+                    // is a longer palindrome; can be also written as offset +1 > maxLen
+                    startPos = i;
+                    maxLen=offset+1;
+                }
+            }
+        }
+        return s.substr(startPos, maxLen);
+    }
+private:
+    bool isPalindrome(vector<vector<bool>>& dp, string& s, int l, int r) {
+        if(l==r)
+            return dp[l][r] = true;
+        else if(r-l==1)
+            return dp[l][r] = s[l]==s[r];
+        else
+            return dp[l][r] = dp[l+1][r-1] ? s[l]==s[r] : false;
+        
+    }
+};

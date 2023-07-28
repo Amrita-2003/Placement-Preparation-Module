@@ -1,3 +1,6 @@
 # Placement-Preparation-Module
 
-Striver's SDE Sheet Solution in C++
+Name- Amrita Singh
+Rollno- 2000290100019
+Semester- 7th
+Section- CSE-A
